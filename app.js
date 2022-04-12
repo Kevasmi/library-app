@@ -4,6 +4,7 @@ const modalContainer = document.querySelector('.modal-container');
 const modalCloseBtn = document.querySelector('.close-btn');
 const removeBtn = document.querySelector('.remove-btn');
 const addBook = document.querySelector('#submit-btn');
+const readPara = document.querySelector('#read-para');
 
 let myLibrary = [];
 
@@ -72,4 +73,12 @@ newBook.addEventListener('click', () => {
 
 modalCloseBtn.addEventListener('click', () => {
     modalContainer.classList.remove('show');
+})
+
+readPara.addEventListener('click', (e) => {
+    if (readPara.className === 'light-red-background') {
+        readPara.className = 'light-green-background'
+    } else {
+        readPara.className = 'light-red-background'
+    }
 })
