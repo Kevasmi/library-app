@@ -1,19 +1,36 @@
+const newBook = document.querySelector('.new-book');
+const modalContainer = document.querySelector('.modal-container');
+const closeBtn = document.querySelector('.close-btn');
+
+newBook.addEventListener('click', () => {
+    modalContainer.classList.add('show');
+})
+
+closeBtn.addEventListener('click', () => {
+    modalContainer.classList.remove('show');
+})
+
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    // this.read = read;
     this.info = function() {
-        console.log(`"${title} ` + 'by ' + `${author}, ` + `${pages} pages, ` + `${read}"`);
+        console.log(`"${title} ` + 'by ' + `${author}, ` + `${pages} pages.`);
     }
 }
 
-function addBookToLibrary() {
-    
+function addBookToLibrary(title, author, pages) {
+    let newBook = new Book(title, author, pages)
+    myLibrary.push(newBook);
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
+// addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 
-theHobbit.info();
+
+
+// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
+
+// theHobbit.info();
