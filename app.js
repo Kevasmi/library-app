@@ -46,6 +46,8 @@ function addCard(title, author, pages) {
     cardRead.textContent = 'Read'
     removeBtn.innerHTML = `&times`
     card.classList.add('card')
+    // cardRead.classList.add('light-red-background')
+    // cardRead.setAttribute('id','read-para')
     removeBtn.classList.add('remove-btn')
     removeBtn.setAttribute('onclick','return this.parentNode.remove();')
     main.appendChild(card)
@@ -73,12 +75,4 @@ newBook.addEventListener('click', () => {
 
 modalCloseBtn.addEventListener('click', () => {
     modalContainer.classList.remove('show');
-})
-
-readPara.addEventListener('click', (e) => {
-    if (readPara.className === 'light-red-background') {
-        readPara.className = 'light-green-background'
-    } else {
-        readPara.className = 'light-red-background'
-    }
 })
