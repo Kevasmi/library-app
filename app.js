@@ -1,16 +1,9 @@
 const main = document.querySelector('main')
 const newBook = document.querySelector('.new-book');
 const modalContainer = document.querySelector('.modal-container');
-const closeBtn = document.querySelector('.close-btn');
+const modalCloseBtn = document.querySelector('.close-btn');
+const removeBtn = document.querySelector('.remove-btn');
 const addBook = document.querySelector('#submit-btn');
-
-newBook.addEventListener('click', () => {
-    modalContainer.classList.add('show');
-})
-
-closeBtn.addEventListener('click', () => {
-    modalContainer.classList.remove('show');
-})
 
 let myLibrary = [];
 
@@ -18,7 +11,6 @@ function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    // this.read = read;
     this.info = function() {
         console.log(`"${title} ` + 'by ' + `${author}, ` + `${pages} pages.`);
     }
@@ -46,12 +38,17 @@ function addCard(title, author, pages) {
     const cardAuthor = document.createElement('h3')
     const cardPages = document.createElement('p')
     const cardRead = document.createElement('p')
+    const removeBtn = document.createElement('button')
     cardTitle.textContent = title
     cardAuthor.textContent = author
     cardPages.textContent = `${pages} pages`
-    cardRead.textContent = 'read'
+    cardRead.textContent = 'Read'
+    removeBtn.innerHTML = `&times`
     card.classList.add('card')
+    removeBtn.classList.add('remove-btn')
+    removeBtn.setAttribute('onclick','return this.parentNode.remove();')
     main.appendChild(card)
+    card.appendChild(removeBtn)
     card.appendChild(cardTitle)
     card.appendChild(cardAuthor)
     card.appendChild(cardPages)
@@ -69,11 +66,10 @@ addBook.addEventListener('click', (e) => {
     addCard(title, author, pages);
 })
 
+newBook.addEventListener('click', () => {
+    modalContainer.classList.add('show');
+})
 
-// addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-
-
-
-// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-
-// theHobbit.info();
+modalCloseBtn.addEventListener('click', () => {
+    modalContainer.classList.remove('show');
+})
