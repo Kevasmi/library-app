@@ -2,7 +2,6 @@ const main = document.querySelector('main')
 const newBook = document.querySelector('.new-book');
 const modalContainer = document.querySelector('.modal-container');
 const modalCloseBtn = document.querySelector('.close-btn');
-const removeBtn = document.querySelector('.remove-btn');
 const addBook = document.querySelector('#submit-btn');
 const readPara = document.querySelector('#read-para');
 
@@ -39,23 +38,26 @@ function addCard(title, author, pages) {
     const cardAuthor = document.createElement('h3')
     const cardPages = document.createElement('p')
     const cardRead = document.createElement('p')
-    const removeBtn = document.createElement('button')
+    const button = document.createElement('button')
     cardTitle.textContent = title
     cardAuthor.textContent = author
     cardPages.textContent = `${pages} pages`
     cardRead.textContent = 'Read'
-    removeBtn.innerHTML = `&times`
+    button.innerHTML = `&times`
     card.classList.add('card')
     // cardRead.classList.add('light-red-background')
     // cardRead.setAttribute('id','read-para')
-    removeBtn.classList.add('remove-btn')
-    removeBtn.setAttribute('onclick','return this.parentNode.remove();')
+    button.classList.add('remove-btn')
+    // removeBtn.setAttribute('onclick','return this.parentNode.remove();')
     main.appendChild(card)
-    card.appendChild(removeBtn)
+    card.appendChild(button)
     card.appendChild(cardTitle)
     card.appendChild(cardAuthor)
     card.appendChild(cardPages)
     card.appendChild(cardRead)
+    button.addEventListener('click', (e) => {
+        e.target.parentNode.remove();
+    })
 }
 
 addBook.addEventListener('click', (e) => {
@@ -76,3 +78,9 @@ newBook.addEventListener('click', () => {
 modalCloseBtn.addEventListener('click', () => {
     modalContainer.classList.remove('show');
 })
+
+function deleteBook() { 
+    button.addEventListener('click', () => {
+        this.parentNode.remove();
+    })
+}
