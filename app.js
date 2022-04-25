@@ -16,7 +16,7 @@ class Book {
     }   
 
     info() {
-        return console.log(`${this.title} ` + 'by ' + `${this.author} ` + `${this.pages} pages.`);
+        return console.log(`${this.title} by ${this.author} ${this.pages} pages.`);
     }
 
 }
