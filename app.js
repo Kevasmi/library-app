@@ -7,19 +7,23 @@ const readPara = document.querySelector('#read-para');
 
 let myLibrary = [];
 
-function Book(title, author, pages) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.info = function() {
-        console.log(`"${title} ` + 'by ' + `${author}, ` + `${pages} pages.`);
+class Book {
+    
+    constructor(title, author, pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+    }   
+
+    info() {
+        console.log(this.title + 'by ' + this.author + this.pages`pages.`);
     }
+
 }
 
 function addBookToLibrary(title, author, pages) {
     let newBook = new Book(title, author, pages)
     myLibrary.push(newBook);
-    console.log(myLibrary)
 } 
 
 function closeModal() {
